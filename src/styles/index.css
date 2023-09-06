@@ -1,0 +1,9 @@
+html,body{
+    width: 100vw;
+    height: 100vh;
+}
+
+h2{
+    font-size: 28px;
+    margin: 20px 15px;
+}
