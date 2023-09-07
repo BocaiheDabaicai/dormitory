@@ -13,7 +13,7 @@ const user = reactive({
 <template>
   <div class="container">
     <div class="login">
-    <var-card :elevation="5">
+    <var-card :elevation="4" src="src/assets/login/mountain.jpg">
       <template #title>
         <h2>登录</h2>
       </template>
@@ -66,8 +66,7 @@ const user = reactive({
 .container{
   display: flex;
   flex-direction: column;
-  background: url("@/assets/login/background2.jpeg") no-repeat;
-  background-size: contain;
+  background-image: radial-gradient(circle, #ffffff 60%, #e9fbfb);
 }
 
 .login {
