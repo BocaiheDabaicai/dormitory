@@ -15,9 +15,13 @@ import '@/styles/index.css'
 import router from "@/router";
 
 // 引入状态管理库
-// import pinia from 'pinia'
+import {createPinia} from 'pinia'
+
+// 引入路由鉴权
+import '@/router/permission'
 
 createApp(App)
     .use(Varlet)
     .use(router)
+    .use(createPinia())
     .mount('#app')

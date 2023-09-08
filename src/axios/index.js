@@ -1,5 +1,6 @@
 import axios from "axios";
 import {getErrorMessage} from "@/axios/helper";
+import {useUserStore} from "@/store/user";
 
 export const request = axios.create({
     baseURL: import.meta.env.VITE_APP_BASE_API,
@@ -9,6 +10,9 @@ export const request = axios.create({
 // 添加请求拦截器
 request.interceptors.request.use((config) => {
     console.log('触发请求拦截器')
+    // 请求发起之前，获取token
+    if(useUserStore().token) config.headers.token = useUserStore().token
+
     return config;
 }, (error) => {
     return Promise.reject(error);

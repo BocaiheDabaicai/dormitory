@@ -1,9 +1,7 @@
 <script setup>
-import {ref, reactive,onMounted} from "vue";
-import {postLogin} from "@/api/login";
-import {GET_TOKEN, SET_TOKEN} from "@/utlis/token";
-import {useRouter} from "vue-router";
-import {Snackbar} from "@varlet/ui";
+import {reactive, onMounted} from "vue";
+import {GET_TOKEN} from "@/utlis/token";
+import {useUserStore} from "@/store/user";
 
 const user = reactive({
   username: '',
@@ -11,32 +9,26 @@ const user = reactive({
   remenber: false
 })
 
-// 全局路由对象
-const router = useRouter()
-// 控制消息条状态
-const fallbackRef = ref(false)
+// 获取用户仓库
+const userStore = useUserStore()
 
 // 登录
 const submit = async function () {
   try {
-    let response = await postLogin(user.username, user.password)
-    console.log(response)
-    let {data} = response
+    await userStore.login(user)
 
-    if (data.code === 200) {
-      Snackbar['success'](`✨✨登录成功~~😀`)
-      user.remenber && SET_TOKEN(data.data.token)
-      await router.push({path: '/'})
-    }
   } catch (error) {
-    Snackbar['info'](error.message)
+    console.log(error.message)
   }
 }
 
+// 验证
+const validateInput = (data) => data.length >= 5 || '文本长度不得小于5'
+
 // 读取Token，直接登录
-onMounted(()=>{
-  console.log(GET_TOKEN())
-})
+// onMounted(() => {
+//   console.log(GET_TOKEN())
+// })
 
 
 </script>
@@ -49,12 +41,14 @@ onMounted(()=>{
           <h2>登录</h2>
         </template>
         <template #description>
-          <var-input class="login-input" placeholder="用户名" type="text" v-model="user.username">
+          <var-input class="login-input" placeholder="用户名" type="text" :rules="[validateInput]"
+                     v-model="user.username">
             <template #append-icon>
               <var-icon class="append-icon" name="checkbox-marked-circle"/>
             </template>
           </var-input>
-          <var-input class="login-input" placeholder="密码" type="password" v-model="user.password">
+          <var-input class="login-input" placeholder="密码" type="password" :rules="[validateInput]"
+                     v-model="user.password">
             <template #append-icon>
               <var-icon class="append-icon" name="weather-cloudy"/>
             </template>
