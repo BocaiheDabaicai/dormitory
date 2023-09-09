@@ -26,6 +26,33 @@ export const constantRoutes = [
                     title: '首页',
                     show: false
                 },
+            },
+            {
+                path: '/house',
+                component: () => import('@/views/house/index.vue'),
+                name: 'House', // 命名路由
+                meta: {
+                    title: '房间',
+                    show: false
+                },
+            },
+            {
+                path: '/situation',
+                component: () => import('@/views/situation/index.vue'),
+                name: 'Situation', // 命名路由
+                meta: {
+                    title: '情况',
+                    show: false
+                },
+            },
+            {
+                path: '/statistics',
+                component: () => import('@/views/statistics/index.vue'),
+                name: 'Statistics', // 命名路由
+                meta: {
+                    title: '统计',
+                    show: false
+                },
             }
         ]
     }

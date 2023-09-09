@@ -3,9 +3,7 @@
 </script>
 
 <template>
-<div>
-
-</div>
+<div>我是房间的主页</div>
 </template>
 
 <style scoped>
