@@ -1,12 +1,13 @@
 <script setup>
 import {ref} from 'vue'
+// 引入路由器对象
 import {useRouter} from "vue-router";
 
-let activeIcon = ref(0)
+let activeIcon = ref('Home')
 let router = useRouter()
 
-const jumpPage = function(path){
-  router.push({path:path})
+const jumpPage = function(name){
+  router.push({name:name})
 }
 
 
@@ -17,10 +18,10 @@ const jumpPage = function(path){
       class="bottom-navigation-example"
       v-model:active="activeIcon"
   >
-    <var-bottom-navigation-item @click="jumpPage('/home')" label="首页" icon="home"/>
-    <var-bottom-navigation-item @click="jumpPage('/house')" label="房间" icon="magnify"/>
-    <var-bottom-navigation-item @click="jumpPage('/situation')" label="情况" icon="heart"/>
-    <var-bottom-navigation-item @click="jumpPage('/statistics')" label="统计" icon="bell"/>
+    <var-bottom-navigation-item @click="jumpPage" name="Home"  label="首页" icon="home"/>
+    <var-bottom-navigation-item @click="jumpPage" name="House"  label="房间" icon="magnify"/>
+    <var-bottom-navigation-item @click="jumpPage" name="Situation"  label="情况" icon="heart"/>
+    <var-bottom-navigation-item @click="jumpPage" name="Statistics"  label="统计" icon="bell"/>
 
     <template #fab>
       <var-icon name="heart"/>

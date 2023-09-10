@@ -1,10 +1,15 @@
 <script setup>
+// 引入Home仓库
+import {useHomeStore} from "@/store/home";
+
+
+let homeStore = useHomeStore()
 
 </script>
 
 <template>
   <var-app-bar color="white" text-color="black"
-               elevation="0" title-position="center" title="Home">
+               elevation="0" title-position="center" :title="homeStore.title">
     <template #left>
       <var-menu>
         <var-button

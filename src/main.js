@@ -20,6 +20,9 @@ import {createPinia} from 'pinia'
 // 引入路由鉴权
 import '@/router/permission'
 
+// 引入动画样式
+import 'animate.css'
+
 createApp(App)
     .use(Varlet)
     .use(router)
