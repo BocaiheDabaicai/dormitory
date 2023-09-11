@@ -17,7 +17,7 @@ function createUserList() {
             userId: 2,
             avatar:
                 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-            username: 'user',
+            username: 'checkStaff',
             password: '111111',
             desc: '住宿人员',
             roles: ['住宿人员'],

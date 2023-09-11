@@ -1,28 +1,34 @@
 <script setup>
-// 引入Home仓库
+// 引入状态对象
+import {ref} from "vue";
+// 引入Home仓库、User仓库
 import {useHomeStore} from "@/store/home";
+import {useUserStore} from "@/store/user";
 
 
 let homeStore = useHomeStore()
+let userStore = useUserStore()
 
+let showLeftBar = ref(false)
+
+// 退出登录
+const logout = async function(){
+  await userStore.logout()
+
+}
 </script>
 
 <template>
   <var-app-bar color="white" text-color="black"
                elevation="0" title-position="center" :title="homeStore.title">
     <template #left>
-      <var-menu>
-        <var-button
-            round
-            text
-        >
-          <var-icon name="menu" :size="24" />
+      <var-menu placement="bottom-end" v-model:show="showLeftBar">
+        <var-button text>
+          <var-icon name="account-circle" :size="24" />
         </var-button>
 
         <template #menu>
-          <var-cell ripple>选项卡</var-cell>
-          <var-cell ripple>选项卡</var-cell>
-          <var-cell ripple>选项卡</var-cell>
+          <var-cell ripple @click="logout">退出登录</var-cell>
         </template>
       </var-menu>
     </template>

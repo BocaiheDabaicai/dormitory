@@ -15,7 +15,7 @@ import '@/styles/index.css'
 import router from "@/router";
 
 // 引入状态管理库
-import {createPinia} from 'pinia'
+import pinia from "@/store";
 
 // 引入路由鉴权
 import '@/router/permission'
@@ -26,5 +26,5 @@ import 'animate.css'
 createApp(App)
     .use(Varlet)
     .use(router)
-    .use(createPinia())
+    .use(pinia)
     .mount('#app')

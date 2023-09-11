@@ -1,7 +1,7 @@
 import {defineStore} from "pinia";
 import {getInfo, postLogin} from "@/api/login";
 import {Snackbar} from "@varlet/ui";
-import {GET_TOKEN, SET_TOKEN} from "@/utlis/token";
+import {GET_TOKEN, REMOVE_TOKEN, SET_TOKEN} from "@/utlis/token";
 import router from "@/router";
 
 export const useUserStore = defineStore('userStore', {
@@ -12,13 +12,13 @@ export const useUserStore = defineStore('userStore', {
     }),
     actions: {
         async login(user) {
-            console.log(user)
             try {
                 let result = await postLogin(user.username, user.password)
                 let data = result.data
 
                 if (data.code === 200) {
                     Snackbar['success'](`✨✨登录成功~~😀`)
+                    this.token = data.data.token
                     user.remenber && SET_TOKEN(data.data.token)
                     await router.push({path: '/'})
                 }
@@ -40,6 +40,17 @@ export const useUserStore = defineStore('userStore', {
                 console.log(this.avatar)
             }catch (error) {
                 Snackbar['info'](error.message)
+            }
+        },
+        async logout(){
+            this.username = ''
+            this.avatar = ''
+            this.token = ''
+            REMOVE_TOKEN()
+            try {
+                await router.push({path: '/login'})
+            }catch (error) {
+                console.log(error.message)
             }
         }
     }
