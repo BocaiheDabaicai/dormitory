@@ -38,7 +38,7 @@ const validateInput = (data) => data.length >= 5 || '文本长度不得小于5'
     <div class="login">
       <var-card :elevation="4" src="src/assets/login/mountain.jpg">
         <template #title>
-          <h2>登录</h2>
+          <h2 style="margin: 20px 15px;">登录</h2>
         </template>
         <template #description>
           <var-input class="login-input" placeholder="用户名" type="text" :rules="[validateInput]"

@@ -5,5 +5,21 @@ html,body{
 
 h2{
     font-size: 28px;
-    margin: 20px 15px;
+}
+
+.main-container{
+    overflow: scroll;
+}
+
+/* 设置规范的小标题样式 */
+.detail-title{
+    margin: 40px 15px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.detail-title-left{
+    letter-spacing: 2px;
+}
+.detail-title-right{
+    color: #b2b6bb;
 }

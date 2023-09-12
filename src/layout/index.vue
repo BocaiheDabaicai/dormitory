@@ -28,6 +28,7 @@ const userStore = useUserStore()
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: #f9f9f9;
 }
 
 .topper {
