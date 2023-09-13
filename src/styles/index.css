@@ -1,8 +1,15 @@
 html,body{
     position: fixed;
     overflow: hidden;
+    font-family: 'JingNanYuan','sans-serif';
+}
+/* 注册字体 */
+@font-face {
+    font-family: "JingNanYuan";
+    src:url("./font/JingNanMaiYuanTi-2.otf");
 }
 
+/* 全局组件样式 */
 h2{
     font-size: 28px;
 }

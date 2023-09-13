@@ -15,17 +15,15 @@ let floating = ref(false)
   <div class="main-container">
     <div class="header">
       <h2 class="header-title">欢迎回来！</h2>
-      <span class="header-fix">Hi! XXX</span>
+      <span class="header-fix">Hi! 开发者</span>
     </div>
     <div class="detail-title">
       <div class="detail-title-left">公寓情况</div>
       <div class="detail-title-right">{{ date }}</div>
     </div>
     <div class="cards">
-      <HomeCard :index="0" title="入住人员数量"></HomeCard>
-      <HomeCard :index="1" title="房间数量"></HomeCard>
-      <HomeCard :index="1" title="使用房间数量"></HomeCard>
-      <HomeCard :index="0" title="统计"></HomeCard>
+      <HomeCard :index="0" title="宿舍人员"></HomeCard>
+      <HomeCard :index="1" title="宿舍房间"></HomeCard>
     </div>
   </div>
 </template>
@@ -48,8 +46,9 @@ let floating = ref(false)
 .cards {
   margin: 0 15px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
 }
 </style>
