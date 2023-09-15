@@ -1,13 +1,11 @@
 <script setup>
-// 引入vue状态对象
-import {ref} from "vue";
-// 引入规范化时间
-import {timer} from "@/utlis/timer";
 // 引入卡片组件
 import HomeCard from '@/components/home/homeCard/index.vue'
+// 引入首页状态管理仓库
+import {useHomeCardStore} from "@/store/homeCard";
 
-let date = timer()
-let floating = ref(false)
+let homeCardStore = useHomeCardStore()
+
 
 </script>
 
@@ -19,11 +17,11 @@ let floating = ref(false)
     </div>
     <div class="detail-title">
       <div class="detail-title-left">公寓情况</div>
-      <div class="detail-title-right">{{ date }}</div>
+      <div class="detail-title-right">{{ homeCardStore.date }}</div>
     </div>
     <div class="cards">
-      <HomeCard :index="0" title="宿舍人员"></HomeCard>
-      <HomeCard :index="1" title="宿舍房间"></HomeCard>
+      <HomeCard v-bind="homeCardStore.person"></HomeCard>
+      <HomeCard v-bind="homeCardStore.dormitory"></HomeCard>
     </div>
   </div>
 </template>
