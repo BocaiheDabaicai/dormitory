@@ -16,5 +16,9 @@ export const useHomeStore = defineStore('homeStore', {
             let result = this.mapObject.find(item => item.name === title)
             this.title = result.label
         }
+    },
+    getters:{
+        // 返回Name名称，遗弃
+        getName:(state) => state.mapObject.find(item => item.label === state.title).name,
     }
 })

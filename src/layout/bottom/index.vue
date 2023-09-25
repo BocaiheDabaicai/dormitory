@@ -1,13 +1,15 @@
 <script setup>
 import {ref} from 'vue'
 // 引入路由器对象
-import {useRouter} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 // 引入Home状态仓库
 import {useHomeStore} from "@/store/home";
 
-let activeIcon = ref('Home')
 let router = useRouter()
+let route = useRoute()
 let homeStore = useHomeStore()
+
+let activeIcon = ref("Home")
 
 const jumpPage = function(name){
   homeStore.changeTile(name)

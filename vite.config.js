@@ -10,11 +10,19 @@ import {VarletUIResolver} from 'unplugin-vue-components/resolvers'
 // 接入mock请求
 import {viteMockServe} from "vite-plugin-mock";
 
+// 导入本地图片
+
 // https://vitejs.dev/config/
 export default ({command}) => {
     return {
         plugins: [
-            vue(),
+            vue({
+                template: {
+                    transformAssetUrls: {
+                        'var-image': ['src']
+                    }
+                }
+            }),
             components({
                 resolvers: [VarletUIResolver()]
             }),

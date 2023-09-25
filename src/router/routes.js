@@ -31,10 +31,31 @@ export const constantRoutes = [
                 path: '/house',
                 component: () => import('@/views/house/index.vue'),
                 name: 'House', // 命名路由
+                redirect:'Area',
                 meta: {
                     title: '房间',
                     show: false
                 },
+                children:[
+                    {
+                        path: '/area',
+                        component: () => import('@/views/house/area/index.vue'),
+                        name: 'Area', // 命名路由
+                        meta: {
+                            title: '区域',
+                            show: false
+                        },
+                    },
+                    {
+                        path: '/floor',
+                        component: () => import('@/views/house/floor/index.vue'),
+                        name: 'Floor', // 命名路由
+                        meta: {
+                            title: '楼层',
+                            show: false
+                        },
+                    },
+                ],
             },
             {
                 path: '/situation',
