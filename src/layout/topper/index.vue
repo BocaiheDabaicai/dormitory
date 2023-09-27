@@ -4,18 +4,24 @@ import {ref} from "vue";
 // 引入Home仓库、User仓库
 import {useHomeStore} from "@/store/home";
 import {useUserStore} from "@/store/user";
-
+// 引入路由对象
+import {useRoute} from "vue-router";
 
 let homeStore = useHomeStore()
 let userStore = useUserStore()
 
+let route = useRoute()
+
 let showLeftBar = ref(false)
 
 // 退出登录
-const logout = async function(){
+const logout = async function () {
   await userStore.logout()
-
 }
+
+// 更新顶部标题
+// bug: 刷新后顶部显示区域
+homeStore.updateTitle(route.matched.at(-1).meta.title)
 </script>
 
 <template>
@@ -24,7 +30,7 @@ const logout = async function(){
     <template #left>
       <var-menu placement="bottom-end" v-model:show="showLeftBar">
         <var-button text>
-          <var-icon name="account-circle" :size="24" />
+          <var-icon name="account-circle" :size="24"/>
         </var-button>
 
         <template #menu>
@@ -38,7 +44,7 @@ const logout = async function(){
           round
           text
       >
-        <var-icon name="bell-outline" />
+        <var-icon name="bell-outline"/>
       </var-button>
     </template>
 

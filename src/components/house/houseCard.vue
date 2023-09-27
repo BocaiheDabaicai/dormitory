@@ -15,9 +15,7 @@ let router = useRouter()
 let houseStore = useHouseStore()
 
 const changeRouter = function () {
-  console.log(info)
-  houseStore.updateCrumbs(info)
-
+  houseStore.updateArea(info)
   router.push({name:'Floor'})
 }
 

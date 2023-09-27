@@ -33,7 +33,7 @@ export const constantRoutes = [
                 name: 'House', // 命名路由
                 redirect:'Area',
                 meta: {
-                    title: '房间',
+                    title: '选择',
                     show: false
                 },
                 children:[
@@ -54,7 +54,28 @@ export const constantRoutes = [
                             title: '楼层',
                             show: false
                         },
+                        children:[
+                            {
+                                path: '/room',
+                                component: () => import('@/views/house/floor/room/index.vue'),
+                                name: 'Room', // 命名路由
+                                meta: {
+                                    title: '房间',
+                                    show: false
+                                },
+                            },
+                            {
+                                path: '/person',
+                                component: () => import('@/views/house/floor/person/index.vue'),
+                                name: 'Person', // 命名路由
+                                meta: {
+                                    title: '详情',
+                                    show: false
+                                },
+                            },
+                        ]
                     },
+
                 ],
             },
             {

@@ -4,15 +4,17 @@ import {useHouseStore} from "@/store/house";
 // 引入信号灯组件、宿舍楼卡片
 import Lamp from "@/components/house/lamp.vue";
 // 引入路由对象
-import {useRoute,useRouter} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {useHomeStore} from "@/store/home";
 
 const houseStore = useHouseStore() // 暂时无用
-const homeStore  = useHomeStore()
+const homeStore = useHomeStore()
 const route = useRoute()
 const router = useRouter()
 
-const changeRoute = function(path){
+const changeRoute = function (path) {
+  houseStore.showFloor = true
+  houseStore.updateArea('')
   router.push({path})
 }
 // console.log(route.matched)
@@ -23,7 +25,9 @@ const changeRoute = function(path){
     <div class="head">
       <div class="head-left">
         <var-breadcrumbs separator="/">
-          <var-breadcrumb v-for="(item,index) in route.matched.slice(1)" :key="index" @click="changeRoute(item.path)">{{ item.meta.title }}</var-breadcrumb>
+          <var-breadcrumb v-for="(item,index) in route.matched.slice(1)" :key="index" @click="changeRoute(item.path)">
+            {{ item.meta.title }}
+          </var-breadcrumb>
         </var-breadcrumbs>
       </div>
       <div class="head-right">
@@ -34,7 +38,7 @@ const changeRoute = function(path){
     </div>
     <div class="detail-title">
       <div class="detail-title-left">公寓类型</div>
-      <div class="detail-title-right"></div>
+      <div class="detail-title-right">{{ houseStore.getRightName }}</div>
     </div>
     <router-view v-slot="{ Component }">
       <component :is="Component"/>

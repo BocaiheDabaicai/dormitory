@@ -15,6 +15,9 @@ export const useHomeStore = defineStore('homeStore', {
         changeTile(title){
             let result = this.mapObject.find(item => item.name === title)
             this.title = result.label
+        },
+        updateTitle(title){
+            this.title = title
         }
     },
     getters:{

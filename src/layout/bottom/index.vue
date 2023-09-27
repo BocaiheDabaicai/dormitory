@@ -2,16 +2,20 @@
 import {ref} from 'vue'
 // 引入路由器对象
 import {useRoute, useRouter} from "vue-router";
-// 引入Home状态仓库
+// 引入Home、House状态仓库
 import {useHomeStore} from "@/store/home";
+import {useHouseStore} from "@/store/house";
 
 let router = useRouter()
 let route = useRoute()
 let homeStore = useHomeStore()
+let houseStore = useHouseStore()
 
-let activeIcon = ref("Home")
+let activeIcon = ref(route.matched[1].name)
 
 const jumpPage = function(name){
+  houseStore.showFloor = true
+  houseStore.updateArea('')
   homeStore.changeTile(name)
   router.push({name:name})
 }
