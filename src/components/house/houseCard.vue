@@ -4,18 +4,16 @@ import {useRouter} from "vue-router";
 // 引入房间状态管理对象
 import {useHouseStore} from "@/store/house";
 
-let {info} = defineProps({
-  name: String,
-  count: Number,
-  src: String,
-  info: String
+let {houseObject} = defineProps({
+  houseObject:Object
 })
 
 let router = useRouter()
 let houseStore = useHouseStore()
+let {name, count, src, info} = houseObject  // 二次解构
 
 const changeRouter = function () {
-  houseStore.updateArea(info)
+  houseStore.updateArea(name)
   router.push({name:'Floor'})
 }
 

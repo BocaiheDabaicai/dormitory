@@ -5,12 +5,13 @@ import {useRouter} from "vue-router";
 import {useHouseStore} from "@/store/house";
 
 // 接收props参数
-defineProps({
-  number:Number
+let {floorObject} = defineProps({
+  floorObject:Object
 })
 
 let houseStore = useHouseStore()
 let router = useRouter()
+let {number,current,max} = floorObject
 
 const changeRouter = function(){
   houseStore.changeShowFloor()
@@ -23,7 +24,7 @@ const changeRouter = function(){
   <var-paper :elevation="2" class="card" radius="15" ripple @click="changeRouter">
     <div class="floor">
       <span>{{ number }}层</span>
-      <span>12/22</span>
+      <span>{{ current }}/{{ max }}</span>
     </div>
   </var-paper>
 </template>

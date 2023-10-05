@@ -4,23 +4,25 @@ import SvgIcon from '@jamescoyle/vue-icon'
 import {mdiLightbulbOnOutline, mdiLightbulb} from '@mdi/js'
 
 // 引入传递参数
-let {label} = defineProps({
-  label:Boolean
+let {personObject} = defineProps({
+  personObject:Object
 })
 
+let {avatar, name, phone, status} = personObject
+
 let property = {
-  color:label?'#02c490':'#f44438',
-  icon:label?mdiLightbulbOnOutline:mdiLightbulb
+  color:status?'#02c490':'#f44438',
+  icon:status?mdiLightbulbOnOutline:mdiLightbulb
 }
 
 </script>
 
 <template>
 <div class="card">
-  <var-avatar size="large" src="https://varlet.gitee.io/varlet-ui/cat.jpg" :round="false"/>
+  <var-avatar size="large" :src="avatar" :round="false"/>
   <div class="text">
-    <span>姓名:王小明</span>
-    <span>手机号码:15951733081</span>
+    <span>姓名:{{ name }}</span>
+    <span>手机号码:{{ phone }}</span>
   </div>
   <svg-icon :style="{color: property.color}" size="48" type="mdi" :path="property.icon"></svg-icon>
 </div>

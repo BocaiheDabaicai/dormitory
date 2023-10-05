@@ -3,14 +3,14 @@
 import {useRouter} from "vue-router";
 
 // 接收props参数
-defineProps({
-  number:Number
+let {roomObject} = defineProps({
+  roomObject: Object
 })
 
 let router = useRouter()
-
-const changeRoute = function(){
-  router.push({path:'/person'})
+let {number, current, max} = roomObject
+const changeRoute = function () {
+  router.push({path: '/person'})
 }
 
 </script>
@@ -18,8 +18,8 @@ const changeRoute = function(){
 <template>
   <var-paper class="card" :elevation="2" radius="15" ripple>
     <div class="floor" @click="changeRoute">
-      <span>A{{ number }}</span>
-      <span>3/4</span>
+      <span>{{ number }}</span>
+      <span>{{ current }}/{{ max }}</span>
     </div>
   </var-paper>
 </template>
@@ -32,7 +32,8 @@ const changeRoute = function(){
   font-size: 5vw;
   margin: 15px;
 }
-.floor{
+
+.floor {
   display: flex;
   flex-direction: column;
   align-items: center;
