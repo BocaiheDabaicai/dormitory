@@ -6,8 +6,7 @@
   <router-view v-slot="{ Component }">
     <transition
         name="animation"
-        enter-active-class="animate__animated animate__zoomIn"
-        leave-active-class="animate__animated animate__zoomOut"
+        enter-active-class="animate__animated animate__fadeIn"
     >
       <component :is="Component"/>
     </transition>

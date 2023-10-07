@@ -26,10 +26,16 @@ h3{
     margin: 40px 15px 20px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .detail-title-left{
     letter-spacing: 2px;
 }
 .detail-title-right{
     color: #b2b6bb;
+}
+
+/* 标签样式自定义 */
+table, caption, tbody, tfoot, thead, tr, th, td{
+    vertical-align: middle;
 }
