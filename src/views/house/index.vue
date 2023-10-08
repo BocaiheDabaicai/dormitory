@@ -29,9 +29,9 @@ const changeRoute = function (path) {
         </var-breadcrumbs>
       </div>
       <div class="head-right">
-        <Lamp type="success" :value="122"/>
-        <Lamp type="warning" :value="112"/>
-        <Lamp type="danger" :value="132"/>
+        <template v-for="(item,index) in houseStore.lampArray" :key="index">
+          <Lamp :lamp-object="item"/>
+        </template>
       </div>
     </div>
     <div class="detail-title">

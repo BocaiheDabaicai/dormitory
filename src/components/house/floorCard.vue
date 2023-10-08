@@ -18,6 +18,11 @@ const changeRouter = function(){
   router.push({path:'/room'})
 }
 
+const getCardColor = function(){
+  if (current === 0) return '#333333'
+  if (current < max) return '#333333'
+  if (current === max) return '#333333'
+}
 </script>
 
 <template>

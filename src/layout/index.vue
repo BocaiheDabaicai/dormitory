@@ -27,7 +27,7 @@ const userStore = useUserStore()
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   background-color: #f9f9f9;
 }
 
@@ -35,7 +35,8 @@ const userStore = useUserStore()
 
 }
 .main{
-  height: 80vh;
+  height: 90vh;
   overflow: scroll;
+  margin-top: 20px;
 }
 </style>

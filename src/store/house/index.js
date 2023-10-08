@@ -7,6 +7,23 @@ export const useHouseStore = defineStore("HouseStore", {
     state: () => ({
         area: "",   // 显示提示栏右侧的信息
         showFloor: true,  // 显示楼层卡片的状态
+        lampArray:[     // 统计灯的展示数据
+            {
+                type:'success',
+                value:120,
+                content:'空余的房间数量'
+            },
+            {
+                type:'warning',
+                value:55,
+                content:'被占用的房间数量'
+            },
+            {
+                type:'danger',
+                value:20,
+                content:'住满的房间数量'
+            }
+        ],
         cardArray: [    // 公寓卡片
             {
                 name: "员工宿舍",
@@ -24,7 +41,7 @@ export const useHouseStore = defineStore("HouseStore", {
         floorArray:[    // 楼层卡片
             {
                 number:1,
-                current:13,
+                current:0,
                 max:45
             },
             {
@@ -44,7 +61,7 @@ export const useHouseStore = defineStore("HouseStore", {
             },
             {
                 number:5,
-                current:30,
+                current:45,
                 max:45
             }
         ],
