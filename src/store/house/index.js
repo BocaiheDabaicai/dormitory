@@ -11,17 +11,17 @@ export const useHouseStore = defineStore("HouseStore", {
             {
                 type:'success',
                 value:120,
-                content:'空余的房间数量'
+                content:'占用较少'
             },
             {
                 type:'warning',
                 value:55,
-                content:'被占用的房间数量'
+                content:'占用较多'
             },
             {
                 type:'danger',
                 value:20,
-                content:'住满的房间数量'
+                content:'占满'
             }
         ],
         cardArray: [    // 公寓卡片

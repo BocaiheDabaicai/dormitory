@@ -1,5 +1,5 @@
 <script setup>
-// 引入性别图标
+// 引入状态图标
 import SvgIcon from '@jamescoyle/vue-icon'
 import {mdiLightbulbOnOutline, mdiLightbulb} from '@mdi/js'
 

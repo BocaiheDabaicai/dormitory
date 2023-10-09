@@ -3,6 +3,8 @@
 import {useRouter} from "vue-router";
 // 引入House状态管理仓库
 import {useHouseStore} from "@/store/house";
+// 引入卡片颜色函数
+import getCardColor from "@/utlis/getCardColor";
 
 // 接收props参数
 let {floorObject} = defineProps({
@@ -18,15 +20,13 @@ const changeRouter = function(){
   router.push({path:'/room'})
 }
 
-const getCardColor = function(){
-  if (current === 0) return '#333333'
-  if (current < max) return '#333333'
-  if (current === max) return '#333333'
-}
 </script>
 
 <template>
-  <var-paper :elevation="2" class="card" radius="15" ripple @click="changeRouter">
+  <var-paper :elevation="2" class="card"
+             radius="15" ripple @click="changeRouter"
+             :style="{backgroundColor:getCardColor(current,max)}"
+  >
     <div class="floor">
       <span>{{ number }}层</span>
       <span>{{ current }}/{{ max }}</span>

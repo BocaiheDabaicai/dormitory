@@ -1,6 +1,8 @@
 <script setup>
 // 引入路由器对象
 import {useRouter} from "vue-router";
+// 引入卡片颜色函数
+import getCardColor from "@/utlis/getCardColor";
 
 // 接收props参数
 let {roomObject} = defineProps({
@@ -16,7 +18,7 @@ const changeRoute = function () {
 </script>
 
 <template>
-  <var-paper class="card" :elevation="2" radius="15" ripple>
+  <var-paper class="card" :elevation="2" radius="15" ripple :style="{backgroundColor:getCardColor(current,max)}">
     <div class="floor" @click="changeRoute">
       <span>{{ number }}</span>
       <span>{{ current }}/{{ max }}</span>

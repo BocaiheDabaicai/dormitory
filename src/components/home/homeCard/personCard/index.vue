@@ -1,4 +1,5 @@
 <script setup>
+// 引入性别图标
 import SvgIcon from '@jamescoyle/vue-icon'
 import {mdiGenderMale, mdiGenderFemale} from '@mdi/js'
 
