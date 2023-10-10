@@ -1,18 +1,39 @@
 <script setup>
+// 引入消息卡片
 import SituationCard from "@/components/situation/situationCard.vue";
+// 引入情况状态管理对象
+import {useSituationStore} from "@/store/situation";
 
+let situationStore = useSituationStore()
 </script>
 
 <template>
-<div class="main-container">
-  <SituationCard color="success"></SituationCard>
-  <SituationCard color="warning"></SituationCard>
-  <SituationCard color="danger"></SituationCard>
-  <SituationCard color="primary"></SituationCard>
-  <SituationCard color="info"></SituationCard>
-</div>
+  <div class="main-container">
+    <transition-group name="list" tag="SituationCard">
+      <template v-for="(item) in situationStore.messageArray" :key="item.id">
+        <SituationCard :situationObject="item"></SituationCard>
+      </template>
+    </transition-group>
+  </div>
+
 </template>
 
 <style scoped>
+.list-move, /* 对移动中的元素应用的过渡 */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
 
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/* 确保将离开的元素从布局流中删除
+  以便能够正确地计算移动的动画。 */
+.list-leave-active {
+  position: absolute;
+}
 </style>

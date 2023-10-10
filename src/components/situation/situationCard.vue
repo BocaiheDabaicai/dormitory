@@ -1,10 +1,23 @@
 <script setup>
-import {timer} from "@/utlis/timer";
+// 引入情况状态管理对象
+import {useSituationStore} from "@/store/situation";
 
-
-defineProps({
-  color:String
+let situationStore = useSituationStore()
+let {situationObject} = defineProps({
+  situationObject: Object,
 })
+let {color, title, content, date} = situationObject
+
+const clearMessage = function () {
+  // 清除选中的消息卡片
+  situationStore.messageArray = situationStore.messageArray.filter(item => item !== situationObject)
+}
+const topMessage = function () {
+  // 置顶选中的卡片
+  let tempObject = situationObject
+  situationStore.messageArray = situationStore.messageArray.filter(item => item !== situationObject)
+  situationStore.messageArray.unshift(tempObject)
+}
 </script>
 
 <template>
@@ -13,17 +26,22 @@ defineProps({
       <var-chip :type="color" :round="false" block>
         <div class="head">
           <var-icon name="radio-blank"/>
-          <span class="head-text">维修请求</span>
+          <span class="head-text">{{ title }}</span>
         </div>
       </var-chip>
       <div class="infoBody">
         <var-icon name="content-copy" :size="30" :color="`var(--color-${color})`"/>
-        <span class="infoBody-text">当前存在3个维修请求未处理</span>
+        <span class="infoBody-text">{{ content }}</span>
       </div>
       <var-divider/>
       <div class="detail-title">
-        <div class="detail-title-left">12</div>
-        <div class="detail-title-right">{{ timer() }}</div>
+        <div class="detail-title-left">
+          <var-space :size="20">
+            <var-button elevation="0" class="buttonText" size="small" @click="clearMessage">清除</var-button>
+            <var-button elevation="0" class="buttonText" size="small" @click="topMessage">置顶</var-button>
+          </var-space>
+        </div>
+        <div class="detail-title-right">{{ date }}</div>
       </div>
     </var-paper>
   </div>
@@ -58,5 +76,9 @@ defineProps({
   margin: 20px 15px;
   display: flex;
   justify-content: space-between;
+}
+
+.buttonText {
+  font-size: 16px;
 }
 </style>
