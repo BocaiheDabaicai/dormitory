@@ -19,6 +19,11 @@ let dataResult = dataArray.map((item, index) => ({
     }),
 );
 
+
+const test = function(e){
+    // 实现颜色比较
+    console.log(e.target.innerText);
+}
 </script>
 
 <template>
@@ -26,7 +31,7 @@ let dataResult = dataArray.map((item, index) => ({
         <var-table :elevation="2">
             <thead>
             <tr>
-                <th v-for="item in titleResult" :key="item.id">{{ item.data }}</th>
+                <th v-for="item in titleResult" :key="item.id" @click="test">{{ item.data }}</th>
             </tr>
             </thead>
             <tbody>
