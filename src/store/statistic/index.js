@@ -31,22 +31,46 @@ export const useStatisticStore = defineStore("statisticStore", {
             },
         ],
         // 用于完成比较功能
+        compareRef:false,   // 比较功能激活
         compareIndex: 0,
+        compareClearColor:false,   // 清除颜色的参数
         compareRecord: 0,   // 记录比较源的id值
         compareOrigin: "",
         compareObject: "",
     }),
     actions: {
+        getTitleData(titleArray) {
+            // 生成规范的表格头数据
+            return Object.keys(titleArray).map((property, index) => ({
+                id: index,
+                data: titleArray[property],
+            }));
+        },
+        getItemData(dataArray) {
+            // 生成规范的表格数据
+            return dataArray.map((item, index) => ({
+                    id: index,
+                    array: Object.keys(item).map(property => ({
+                        id: property,
+                        data: item[property],
+                        styleObj: {},
+                    })),
+                }),
+            );
+        },
         getCompareData(text) {
+            // 正确生成比较数据
             if (this.compareIndex % 2 === 0) this.compareOrigin = text;
             if (this.compareIndex % 2 !== 0) this.compareObject = text;
             this.compareIndex++;
-            return this.compareIndex % 2 !== 0
+            return this.compareIndex % 2 !== 0;
         },
         clearCompareData() {
+            // 清除比较数据
             this.compareIndex = 0;
             this.compareOrigin = "";
             this.compareObject = "";
+            this.compareClearColor = !this.compareClearColor;
         },
     },
     getters: {},

@@ -1,28 +1,29 @@
 <script setup>
 import StaCard from "@/components/statistics/staCard.vue";
-// 引入Vue状态对象
-import { ref } from "vue";
 // 引入统计状态管理仓库
 import { useStatisticStore } from "@/store/statistic";
 
 let statisticStore = useStatisticStore();
-let compareRef = ref(false);
+
 const onCompare = function() {
-    compareRef.value = true;
+    // 触发比较
+    statisticStore.compareRef = true;
 };
 const onClearCompare = function() {
-    statisticStore.clearCompareData()
-    compareRef.value = false;
+    // 清除比较
+    statisticStore.clearCompareData();
+    statisticStore.compareRef = false;
 };
+
 </script>
 
 <template>
     <div class="main-container">
         <div class="option-buttons">
             <transition-group name="button">
-                <var-button v-if="!compareRef" @click="onCompare">比较数据</var-button>
+                <var-button v-if="!statisticStore.compareRef" @click="onCompare">比较数据</var-button>
                 <var-button v-else @click="onClearCompare">清除比较</var-button>
-                <div v-if="compareRef" class="compareText">
+                <div v-if="statisticStore.compareRef" class="compareText">
                     <span>比较源:<span style="margin-left: 15px">{{ statisticStore.compareOrigin }}</span></span>
                     <span>比较对象:<span style="margin-left: 15px">{{ statisticStore.compareObject }}</span></span>
                 </div>
@@ -40,7 +41,7 @@ const onClearCompare = function() {
             </div>
         </div>
         <template v-for="item in statisticStore.dataBag">
-            <StaCard :tableData="item" />
+            <StaCard :tableData="item"/>
         </template>
     </div>
 </template>
@@ -68,7 +69,7 @@ const onClearCompare = function() {
 }
 
 .button-enter-from,
-.button-leave-to{
+.button-leave-to {
     opacity: 0;
     transform: scale(0.1);
     position: absolute;

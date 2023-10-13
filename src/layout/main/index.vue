@@ -5,8 +5,7 @@
 <template>
   <router-view v-slot="{ Component }">
     <transition
-        name="animation"
-        enter-active-class="animate__animated animate__fadeIn"
+        name="wholePage"
     >
       <component :is="Component"/>
     </transition>
@@ -21,5 +20,17 @@
   justify-content: center;
   align-items: center;
   background-color: #e9fbfb;
+}
+
+.wholePage-enter-active,
+.wholePage-leave-active{
+    transition: all 0.46s ease;
+}
+
+.wholePage-enter-from,
+.wholePage-leave-to {
+    opacity: 0;
+    transform: translateX(-80vw);
+    position: absolute;
 }
 </style>
