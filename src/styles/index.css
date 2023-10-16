@@ -35,6 +35,20 @@ h3{
     color: #b2b6bb;
 }
 
+/* 设置规范的小卡片标题样式 */
+.detail-card-title{
+    margin: 5px 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.detail-card-title-left{
+    letter-spacing: 2px;
+}
+.detail-card-title-right{
+    /*color: #b2b6bb;*/
+}
+
 /* 标签样式自定义 */
 table, caption, tbody, tfoot, thead, tr, th, td{
     vertical-align: middle;

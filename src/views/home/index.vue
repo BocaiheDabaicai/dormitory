@@ -1,52 +1,52 @@
 <script setup>
 // 引入卡片组件
-import HomeCard from '@/components/home/homeCard/index.vue'
+import HomeCard from "@/components/home/homeCard/index.vue";
 // 引入首页状态管理仓库
-import {useHomeCardStore} from "@/store/homeCard";
+import { useHomeCardStore } from "@/store/homeCard";
 
-let homeCardStore = useHomeCardStore()
+let homeCardStore = useHomeCardStore();
 
 
 </script>
 
 <template>
-  <div class="main-container">
-    <div class="header">
-      <h2 class="header-title">欢迎回来！</h2>
-      <span class="header-fix">Hi! 开发者</span>
+    <div class="main-container">
+        <div class="header">
+            <h2 class="header-title">欢迎回来！</h2>
+            <span class="header-fix">Hi! 开发者</span>
+        </div>
+        <div class="detail-title">
+            <div class="detail-title-left">公寓情况</div>
+            <div class="detail-title-right">{{ homeCardStore.date }}</div>
+        </div>
+        <div class="cards">
+            <HomeCard v-bind="homeCardStore.person"></HomeCard>
+            <HomeCard v-bind="homeCardStore.dormitory"></HomeCard>
+        </div>
     </div>
-    <div class="detail-title">
-      <div class="detail-title-left">公寓情况</div>
-      <div class="detail-title-right">{{ homeCardStore.date }}</div>
-    </div>
-    <div class="cards">
-      <HomeCard v-bind="homeCardStore.person"></HomeCard>
-      <HomeCard v-bind="homeCardStore.dormitory"></HomeCard>
-    </div>
-  </div>
 </template>
 
 <style scoped>
 .header {
-  margin: 0 15px;
+    margin: 0 15px;
 }
 
 .header-title {
-  margin-bottom: 10px;
-  letter-spacing: 2px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
 }
 
 .header-fix {
-  color: #b2b6bb;
-  letter-spacing: 2px;
+    color: #b2b6bb;
+    letter-spacing: 2px;
 }
 
 .cards {
-  margin: 0 15px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+    margin: 0 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 </style>
