@@ -44,15 +44,4 @@ const bottomStore = useBottomStore();
     margin-top: 20px;
 }
 
-.dragAnimate-enter-active,
-.dragAnimate-leave-active {
-    transition: all 0.5s ease;
-}
-
-.dragAnimate-enter-from,
-.dragAnimate-leave-to {
-    opacity: 0;
-    transform: translateX(30px);
-}
-
 </style>
