@@ -6,7 +6,7 @@ import { useBottomStore } from "@/store/bottom";
 import Topper from "./topper/index.vue";
 import Main from "./main/index.vue";
 import Bottom from "./bottom/index.vue";
-import DragCard from "@/components/dragCard.vue";
+import DragRegisterCard from "@/components/dragCard/dragRegisterCard.vue";
 
 const userStore = useUserStore();
 const bottomStore = useBottomStore();
@@ -23,7 +23,7 @@ const bottomStore = useBottomStore();
         </div>
         <Bottom></Bottom>
         <template v-for="item in bottomStore.roomCardNumber" :key="item">
-            <DragCard :index="item"></DragCard>
+            <DragRegisterCard :index="item"></DragRegisterCard>
         </template>
     </div>
 </template>

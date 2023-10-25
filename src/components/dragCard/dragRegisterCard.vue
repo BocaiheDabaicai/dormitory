@@ -3,6 +3,9 @@
 import { useBottomStore } from "@/store/bottom";
 // 引入vue状态管理对象
 import { ref, reactive } from "vue";
+// 引入结果界面
+import Result from "@/components/dragCard/result.vue";
+import { Snackbar } from "@varlet/ui";
 
 let { index } = defineProps({
     index: Number,
@@ -20,6 +23,47 @@ const removeDragCard = function() {
     // 移除拖拽卡片
     bottomStore.closeRoom(index);
 };
+
+// 控制结果弹窗
+const openResult = () => success.value = true
+const closeResult = () => success.value = false
+const successResult = () => {
+    success.value = false;
+    bottomStore.closeRoom(index);
+    Snackbar.success(`${personObject.name}--入住完成!`)
+}
+
+let personObject = reactive({
+    // titleObj:{
+    //     type:'error',
+    //     title:'失败了捏~'
+    // },
+    // buttonObj:{
+    //   type:'danger',
+    //   message:'重新输入一下吧'
+    // },
+    titleObj:{
+        type:'success',
+        title:'成功!:)~'
+    },
+    buttonObj:{
+        type:'success',
+        message:'入住吧'
+    },
+    name:'刘刘刘',
+    sex:'男',
+    card:'522223200010260451',
+    phone:'15951733081',
+    area:'员工宿舍',
+    floor:'二楼',
+    room:'A204',
+    date:'2023年10月18日',
+    remark:'无',
+    result:'数据验证成功！！',
+    // close:closeResult,
+    close:successResult,
+})
+
 </script>
 
 <template>
@@ -43,31 +87,11 @@ const removeDragCard = function() {
             <var-input class="select" v-if="inputObj.code.length===6&&inputObj.area" variant="outlined" :maxlength="4"
                        placeholder="请输入入住房间编码" v-model="inputObj.room" />
             <var-button block v-if="inputObj.code.length===6&&inputObj.area&&inputObj.room.length===4"
-                        @click="success = true">校验
+                        @click="openResult">校验
             </var-button>
         </var-paper>
         <var-popup :default-style="false" v-model:show="success">
-            <var-result class="result" type="success" title="成功!:)">
-                <template #footer>
-                    <var-button type="success" @click="success = false">入住吧</var-button>
-                </template>
-                <template #description>
-                    <div class="user-detail">
-                        <hr/>
-                        <span>姓名：刘刘刘</span>
-                        <span>性别：男</span>
-                        <span>身份证：522223200010260451</span>
-                        <span>手机号码：15951733081</span>
-                        <span>入住区域：员工宿舍</span>
-                        <span>入住楼层：二楼</span>
-                        <span>入住房间：A204</span>
-                        <span>入住时间：2023年10月18日</span>
-                        <span>备注：无</span>
-                        <hr/>
-                        <span>数据验证成功！！</span>
-                    </div>
-                </template>
-            </var-result>
+            <Result :personObject="personObject"/>
         </var-popup>
     </var-drag>
 </template>
@@ -83,13 +107,5 @@ const removeDragCard = function() {
 .select {
     margin: 1.25vh 0;
 }
-.result{
-    width: 70vw;
-    border-radius: 15px;
-}
-.user-detail{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-}
+
 </style>

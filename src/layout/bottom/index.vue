@@ -8,9 +8,9 @@ import { useHouseStore } from "@/store/house";
 import { useBottomStore } from "@/store/bottom";
 // 引入图标
 import SvgIcon from "@jamescoyle/vue-icon";
-import { mdiAccountPlus, mdiHomeEdit, mdiVolumeHigh } from "@mdi/js";
+import { mdiAccountPlus, mdiHomeEdit, mdiVolumeHigh, mdiHomeOff } from "@mdi/js";
 // 引入提示框
-import {Snackbar} from "@varlet/ui";
+import { Snackbar } from "@varlet/ui";
 
 let router = useRouter();
 let route = useRoute();
@@ -31,8 +31,12 @@ const type = ref("primary");
 const addPersonCard = function() {
     // 生成用户卡片
     bottomStore.getRoom();
-    Snackbar.success(`添加人员卡片生成成功!`)
+    Snackbar.success(`添加人员卡片生成成功!`);
 };
+const notice = function(){
+    // 发出通知
+    Snackbar.info(`功能暂未开放~~`);
+}
 
 </script>
 
@@ -66,6 +70,12 @@ const addPersonCard = function() {
                             修改房间信息
                         </var-cell>
                         <var-cell class="cellStyle" ripple>
+                            <template #icon>
+                                <svg-icon type="mdi" :path="mdiHomeOff "></svg-icon>
+                            </template>
+                            入住人员离宿
+                        </var-cell>
+                        <var-cell class="cellStyle" ripple @click="notice">
                             <template #icon>
                                 <svg-icon type="mdi" :path="mdiVolumeHigh "></svg-icon>
                             </template>
