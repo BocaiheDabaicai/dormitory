@@ -1,0 +1,89 @@
+{
+  "login": {
+    "an-title": "用户-登录",
+    "an-message": "用户使用OA账号进行登录，并返回token",
+    "an-type": "post",
+    "an-result": {
+      "status": "Int",
+      "title": "String",
+      "message": "String",
+      "token": "String"
+    },
+    "username": "String",
+    "password": "String"
+  },
+  "logout": {
+    "an-title": "用户-登出",
+    "an-message": "用户登出账号，使token失效",
+    "an-type": "post",
+    "an-result": {
+      "status": "Int",
+      "title": "String",
+      "message": "String"
+    },
+    "token": "String"
+  },
+  "an-instruction": "--特别说明：以下请求均需要在请求头存放token才能够获取数据--",
+  "homeCard-data": {
+    "an-title": "首页-卡片数据",
+    "an-message": "总体数据情况，当前包括宿舍入住人员、宿舍房间",
+    "an-type": "get",
+    "an-result": {
+      "status": "Int",
+      "title": "String",
+      "message": "String",
+      "data": {
+        "homeCardArray": [
+          {
+            "index": "int",
+            "title": "String",
+            "current": "int-当前数量",
+            "max": "int-数量上限"
+          }
+        ]
+      }
+    }
+  },
+  "homeCard-data-person": {
+    "an-title": "首页-卡片数据-宿舍人员",
+    "an-message": "获取不在宿舍的人员列表",
+    "an-type": "get",
+    "an-result": {
+      "status": "Int",
+      "title": "String",
+      "message": "String",
+      "data": {
+        "personArray": [
+          {
+            "id": "String",
+            "avatar": "String",
+            "sex": "String",
+            "name": "String",
+            "dormitoryNumber": "String-房间号"
+          }
+        ]
+      }
+    }
+  },
+  "homeCard-data-room": {
+    "an-title": "首页-卡片数据-宿舍房间",
+    "an-message": "获取房间有空余床位的房间号",
+    "an-type": "get",
+    "an-result": {
+      "status": "Int",
+      "title": "String",
+      "message": "String",
+      "data": {
+        "roomArray": [
+          {
+            "id": "String",
+            "dormitoryNumber": "String",
+            "current": "int",
+            "max": "int"
+          }
+        ]
+      }
+    }
+  }
+}
+

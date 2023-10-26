@@ -20,8 +20,9 @@ let homeCardStore = useHomeCardStore();
             <div class="detail-title-right">{{ homeCardStore.date }}</div>
         </div>
         <div class="cards">
-            <HomeCard v-bind="homeCardStore.person"></HomeCard>
-            <HomeCard v-bind="homeCardStore.dormitory"></HomeCard>
+            <template v-for="item in homeCardStore.homeCardArray" :key="item.index">
+                <HomeCard v-bind="item"></HomeCard>
+            </template>
         </div>
     </div>
 </template>

@@ -63,6 +63,11 @@ export const useHouseStore = defineStore("HouseStore", {
                 number:5,
                 current:45,
                 max:45
+            },
+            {
+                number:6,
+                current:2,
+                max:45
             }
         ],
         roomArray:[    // 房间卡片
