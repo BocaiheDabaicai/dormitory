@@ -24,9 +24,10 @@
     "token": "String"
   },
   "an-instruction": "--特别说明：以下请求均需要在请求头存放token才能够获取数据--",
+  "an-Interface-1": "----1.首页的接口请求----",
   "homeCard-data": {
     "an-title": "首页-卡片数据",
-    "an-message": "总体数据情况，当前包括宿舍入住人员、宿舍房间",
+    "an-message": "总体数据情况，当前包括宿舍入住人员、宿舍房间，返回数组，卡片ID、卡片标题、当前数量、数量上限",
     "an-type": "get",
     "an-result": {
       "status": "Int",
@@ -37,8 +38,8 @@
           {
             "index": "int",
             "title": "String",
-            "current": "int-当前数量",
-            "max": "int-数量上限"
+            "current": "int",
+            "max": "int"
           }
         ]
       }
@@ -80,6 +81,62 @@
             "dormitoryNumber": "String",
             "current": "int",
             "max": "int"
+          }
+        ]
+      }
+    }
+  },
+  "an-Interface-2": "----2.房间的接口请求----",
+  "house-lamp-array": {
+    "an-title": "房间-信号灯-数组",
+    "an-message": "按顺序拿到三个对象，返回数组，信号灯类型（无需更改）、房间数量、信号灯描述（无需更改）",
+    "an-type": "get",
+    "an-result": {
+      "status": "Int",
+      "title": "String",
+      "message": "String",
+      "data": {
+        "lampArray": [
+          {
+            "type": "success",
+            "value": 120,
+            "content": "占用较少"
+          },
+          {
+            "type": "warning",
+            "value": 55,
+            "content": "占用较多"
+          },
+          {
+            "type": "danger",
+            "value": 20,
+            "content": "房间满员"
+          }
+        ]
+      }
+    }
+  },
+  "house-card-array": {
+    "an-title": "房间-公寓-数组",
+    "an-message": "用于显示房间的公寓界面卡片，返回数组，公寓名称、公寓的可入住房间数、公寓图片、公寓描述（建议保留该名称）",
+    "an-type": "get",
+    "an-result": {
+      "status": "Int",
+      "title": "String",
+      "message": "String",
+      "data": {
+        "cardArray": [
+          {
+            "name": "String",
+            "count": "Int",
+            "src": "String",
+            "info": "dormitory"
+          },
+          {
+            "name": "String",
+            "count": "Int",
+            "src": "String",
+            "info": "hotel"
           }
         ]
       }
