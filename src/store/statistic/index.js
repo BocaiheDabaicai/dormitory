@@ -16,7 +16,7 @@ export const useStatisticStore = defineStore("statisticStore", {
             },
             {
                 titleArray: {
-                    headName: "楼层",
+                    headName: "G楼层",
                     headItem1: "总人数",
                     headItem2: "应到人数",
                     headItem3: "实到人数",
@@ -27,6 +27,20 @@ export const useStatisticStore = defineStore("statisticStore", {
                     { name: "三层", item1: 62, item2: 42, item3: 42 },
                     { name: "四层", item1: 71, item2: 45, item3: 41 },
                     { name: "五层", item1: 80, item2: 80, item3: 3 },
+                ],
+            },
+            {
+                titleArray: {
+                    headName: "Z楼层",
+                    headItem1: "总人数",
+                    headItem2: "应到人数",
+                    headItem3: "实到人数",
+                },
+                dataArray: [
+                    { name: "一层", item1: 23, item2: 20, item3: 15 },
+                    { name: "二层", item1: 24, item2: 18, item3: 2 },
+                    { name: "三层", item1: 24, item2: 16, item3: 16 },
+                    { name: "四层", item1: 25, item2: 19, item3: 10 },
                 ],
             },
         ],

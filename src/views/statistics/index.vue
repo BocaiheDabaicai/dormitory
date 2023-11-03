@@ -35,13 +35,13 @@ const onClearCompare = function() {
                 提示灯
             </div>
             <div class="detail-title-right">
-                <var-chip type="success">达标</var-chip>
-                <var-chip type="warning">警告</var-chip>
-                <var-chip type="danger">危险</var-chip>
+                <var-chip class="chip" type="success">达标</var-chip>
+                <var-chip class="chip" type="warning">警告</var-chip>
+                <var-chip class="chip" type="danger">危险</var-chip>
             </div>
         </div>
         <template v-for="item in statisticStore.dataBag">
-            <StaCard :tableData="item"/>
+            <StaCard :tableData="item" />
         </template>
     </div>
 </template>
@@ -62,6 +62,14 @@ const onClearCompare = function() {
     display: flex;
     flex-direction: column;
     font-size: 14px;
+}
+
+.chip {
+    margin-right: 5px;
+}
+
+.chip:last-child {
+    margin-right: 0;
 }
 
 .button-enter-active {

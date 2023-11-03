@@ -1,8 +1,10 @@
 <script setup>
-// 引入卡片组件
+// 引入一般卡片组件、高级卡片组件
 import HomeCard from "@/components/home/homeCard/index.vue";
+import AdvancedCard from "@/components/home/advancedCard/index.vue";
 // 引入首页状态管理仓库
 import { useHomeCardStore } from "@/store/homeCard";
+
 
 let homeCardStore = useHomeCardStore();
 
@@ -23,6 +25,13 @@ let homeCardStore = useHomeCardStore();
             <template v-for="item in homeCardStore.homeCardArray" :key="item.index">
                 <HomeCard v-bind="item"></HomeCard>
             </template>
+        </div>
+        <div class="detail-title">
+            <div class="detail-title-left">高级功能</div>
+            <div class="detail-title-right">致力于深度分析宿舍情况</div>
+        </div>
+        <div class="cards">
+            <AdvancedCard/>
         </div>
     </div>
 </template>

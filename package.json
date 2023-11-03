@@ -13,6 +13,7 @@
     "@varlet/ui": "^2.16.1",
     "animate.css": "^4.1.1",
     "axios": "^1.5.0",
+    "css-doodle": "^0.37.3",
     "pinia": "^2.1.6",
     "prettier": "^3.0.3",
     "reset-css": "^5.0.2",

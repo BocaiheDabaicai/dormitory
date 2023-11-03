@@ -118,7 +118,7 @@
   },
   "house-card-array": {
     "an-title": "房间-公寓-数组",
-    "an-message": "用于显示房间的公寓界面卡片，返回数组，公寓名称、公寓的可入住房间数、公寓图片、公寓描述（建议保留该名称）",
+    "an-message": "用于显示房间的公寓界面卡片，返回数组，公寓名称、公寓的可入住房间数、公寓图片、公寓描述（保留预设名称）",
     "an-type": "get",
     "an-result": {
       "status": "Int",
@@ -141,6 +141,67 @@
         ]
       }
     }
-  }
+  },
+  "house-floor-array": {
+    "an-title": "房间-楼层-数组",
+    "an-message": "用于显示公寓的楼层信息，返回数组，层号、当前该层入住人数、该层入住人数上限",
+    "an-type": "get",
+    "an-result": {
+      "status": "Int",
+      "title": "String",
+      "message": "String",
+      "data": {
+        "floorArray": [
+          {
+            "number": "Int",
+            "current": "Int",
+            "max": "Int"
+          }
+        ]
+      }
+    }
+  },
+  "house-room-array": {
+    "an-title": "房间-房间-数组",
+    "an-message": "用于显示当前楼层的房间信息，返回数组，房间号、当前该房间入住人数、该房间入住上限",
+    "an-type": "get",
+    "an-result": {
+      "status": "Int",
+      "title": "String",
+      "message": "String",
+      "data": {
+        "roomArray": [
+          {
+            "number": "String",
+            "current": "Int",
+            "max": "Int"
+          }
+        ]
+      }
+    }
+  },
+  "house-person-array": {
+    "an-title": "房间-人员-数组",
+    "an-message": "用于显示当前房间的入住人员信息，返回数组，头像地址、入住人员名称、电话号码、是否在宿舍",
+    "an-type": "get",
+    "an-result": {
+      "status": "Int",
+      "title": "String",
+      "message": "String",
+      "data": {
+        "personArray":[
+          {
+            "avatar":"String",
+            "name":"String",
+            "phone":"String",
+            "status":"Boolean"
+          }
+        ]
+      }
+    }
+  },
+  "an-Interface-3": "----3.情况的接口请求----",
+  "situation-message-array": "暂时略过",
+  "an-Interface-4": "----4.统计的接口请求----"
 }
 
