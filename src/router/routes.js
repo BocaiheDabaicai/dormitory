@@ -102,5 +102,10 @@ export const constantRoutes = [
         path:'/404',
         component:()=> import('@/views/404/index.vue'),
         name:'404'
+    },
+    {
+        path:'/advance',
+        component:()=> import('@/views/advance/index.vue'),
+        name:'advance'
     }
 ]
