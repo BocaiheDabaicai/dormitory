@@ -26,11 +26,11 @@ let homeCardStore = useHomeCardStore();
                 <HomeCard v-bind="item"></HomeCard>
             </template>
         </div>
-        <div class="detail-title">
+        <div v-if="false" class="detail-title">
             <div class="detail-title-left">高级功能</div>
             <div class="detail-title-right">致力于深度分析宿舍情况</div>
         </div>
-        <div class="cards">
+        <div v-if="false" class="cards">
             <AdvancedCard/>
         </div>
     </div>
